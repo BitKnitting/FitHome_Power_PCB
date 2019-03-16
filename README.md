@@ -4,6 +4,8 @@ My goal is to get some PCBs from OSH Park and populate with parts based on a BoM
 * U4 (PN = HKLPM01, Tisham has a field in the part kicost:pricing - 50:$2.74). The part number is for a Hi-Link 220VAC -> 5VDC.
 __Question__: I want 120VAC -> 3.3VDC.  Correct? 
 ![120VAC->3.3VDC](https://github.com/BitKnitting/Tisham_PCB_Power_ATM90e26/blob/master/images/ac-dc-converter.png) 
+_Note:  As I researched SMPSs, I became concerned with the safety of using Hi-Link’s, particularly after reading [Skippy’s Random Ramblings](https://skippy.org.uk/quick-look-at-the-hlk-pm01/).  It will cost more but be safer.
+  * Changed part to [Recom RAC03-GA](https://www.recom-power.com/pdf/Powerline-AC-DC/RAC03-GA.pdf).
 
 ************************************************************
 # Tisham's Readme
