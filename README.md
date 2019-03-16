@@ -1,3 +1,12 @@
+My goal is to get some PCBs from OSH Park and populate with parts based on a BoM I create with the [Kicad_to_Octopart_BOM_csv](https://github.com/BitKnitting/Kicad_to_Octopart_BOM_csv) tool.
+
+# First Pass  
+* U4 (PN = HKLPM01, Tisham has a field in the part kicost:pricing - 50:$2.74). The part number is for a Hi-Link 220VAC -> 5VDC.
+__Question__: I want 120VAC -> 3.3VDC.  Correct?  
+
+************************************************************
+# Tisham's Readme
+************************************************************
 # DIN Rail Format Energy Meter Base Board
 ## Power SMPS module
 - 90v-240v AC input
