@@ -3,7 +3,7 @@ My goal is to get some PCBs from OSH Park and populate with parts based on a BoM
 # First Pass  
 * U4 (PN = HKLPM01, Tisham has a field in the part kicost:pricing - 50:$2.74). The part number is for a Hi-Link 220VAC -> 5VDC.
 __Question__: I want 120VAC -> 3.3VDC.  Correct? 
-[!120VAC->3.3VDC](https://github.com/BitKnitting/Tisham_PCB_Power_ATM90e26/blob/master/images/ac-dc-converter.png) 
+![120VAC->3.3VDC](https://github.com/BitKnitting/Tisham_PCB_Power_ATM90e26/blob/master/images/ac-dc-converter.png) 
 
 ************************************************************
 # Tisham's Readme
