@@ -21,7 +21,7 @@ Deleted parts include:
 * D1 (PMEG1020EA)
 
 __CONCERN__:  Tisham notes below: x2 _2x1117 series LDO for generating 3.3v from 5V input to clean up SMPS noise_.  
-__TBD__: stay with the 5V Hi-Link 5V DC and include LDO?  I think Tisham would say yes to this.
+__POR__: Removed LDOs.  Added a 1uF C between VDC+/-
 
 ## Changed parts
 These are the parts that need to change because they either gave 5V out or required 5V in.
@@ -36,6 +36,7 @@ _As I researched SMPSs, I became concerned with the safety of using Hi-Link’s,
 _Not as high quality as the Recom.  But significantly less expensive.  Most likely order from alibaba express._
 
 TODO: PINOUT/layout switch footprint
+
 ### U5
 U5 isolates the 3.3V that came off U4 into 3.3V for the CPU and the other 3.3V for the ATM meters.  The one Tisham is using (ROE-0505S) inputs 5V and outputs 5V.  I changed this to the [RNM-3.33.3S](https://datasheet.octopart.com/RNM-3.33.3S-Recom-Power-datasheet-17725523.pdf).
 
@@ -49,8 +50,14 @@ The schematic supports 8 current clamps.  I need only two.
 The rest.
 * The unused 5.8R - R3,R4,R10,R11,R20,R21,R18,R19,R30,R31,R29,R28.
 * The unused J3 connector.
-* J5 - the 8 pin connector.  I replaced with a 2 2pin connectors. One connector for each clam
-* Replaced J4 with a 2 x 6 and got rid of unused connections.
+* J5 - the 8 pin connector.  I replaced with a 2 3.5mm TRS audio jacks since this is the connection used by CTs.  These are currently labeled J3 and J4.  I find I get confused on how to wire up a TRS audio jack. So I like to keep an image around.
+
+
+********
+TODO: Verify wiring is correct for the TRS Jacks
+********
+# Added LED
+Added an LED and R at the SMPS 3.3V output to indicate whether the 3.3V is indeed there.
 # From 0603 to 0805
 I have standardized on the 0805 package size for Rs and Cs.  I have these in stock.  It is a happier experience to solder with the bigger footprint.
 

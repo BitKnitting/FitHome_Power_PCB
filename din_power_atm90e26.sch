@@ -325,50 +325,26 @@ $EndComp
 $Comp
 L device:R R1
 U 1 1 59F735F1
-P 950 5150
-F 0 "R1" V 743 5150 50  0000 C CNN
-F 1 "5.8R" V 834 5150 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 880 5150 50  0001 C CNN
-F 3 "" H 950 5150 50  0001 C CNN
-F 4 "R0603" H 950 5150 50  0001 C CNN "PN"
-F 5 "CPF0603B5R76E1" H 950 5150 60  0001 C CNN "manf#"
-	1    950  5150
+P 2150 4800
+F 0 "R1" V 1943 4800 50  0000 C CNN
+F 1 "5.8R" V 2034 4800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2080 4800 50  0001 C CNN
+F 3 "" H 2150 4800 50  0001 C CNN
+F 4 "R0603" H 2150 4800 50  0001 C CNN "PN"
+F 5 "CPF0603B5R76E1" H 2150 4800 60  0001 C CNN "manf#"
+	1    2150 4800
 	-1   0    0    1   
 $EndComp
 $Comp
 L device:R R2
 U 1 1 59F735F2
-P 950 5550
-F 0 "R2" V 743 5550 50  0000 C CNN
-F 1 "5.8R" V 834 5550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 880 5550 50  0001 C CNN
-F 3 "" H 950 5550 50  0001 C CNN
-F 4 "R0603" H 950 5550 50  0001 C CNN "PN"
-	1    950  5550
-	-1   0    0    1   
-$EndComp
-$Comp
-L device:R R8
-U 1 1 59F735F3
-P 950 6150
-F 0 "R8" V 743 6150 50  0000 C CNN
-F 1 "5.8R" V 834 6150 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 880 6150 50  0001 C CNN
-F 3 "" H 950 6150 50  0001 C CNN
-F 4 "R0603" H 950 6150 50  0001 C CNN "PN"
-	1    950  6150
-	-1   0    0    1   
-$EndComp
-$Comp
-L device:R R9
-U 1 1 59F735F4
-P 950 6550
-F 0 "R9" V 743 6550 50  0000 C CNN
-F 1 "5.8R" V 834 6550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 880 6550 50  0001 C CNN
-F 3 "" H 950 6550 50  0001 C CNN
-F 4 "R0603" H 950 6550 50  0001 C CNN "PN"
-	1    950  6550
+P 2150 5200
+F 0 "R2" V 1943 5200 50  0000 C CNN
+F 1 "5.8R" V 2034 5200 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2080 5200 50  0001 C CNN
+F 3 "" H 2150 5200 50  0001 C CNN
+F 4 "R0603" H 2150 5200 50  0001 C CNN "PN"
+	1    2150 5200
 	-1   0    0    1   
 $EndComp
 Text GLabel 1250 1050 0    60   Input ~ 0
@@ -482,23 +458,17 @@ $EndComp
 Text GLabel 6400 1500 3    60   Input ~ 0
 +3.3V_ISO
 Text Notes 5100 3550 0    60   ~ 0
-Power Systems (5V)
+Power System
 Text Notes 1800 700  0    60   ~ 0
 Voltage Sampling
 Text Notes 1600 4000 0    60   ~ 0
 Current Sampling
 Text Notes 8750 3400 0    60   ~ 0
 CT Input
-Text Notes 7550 6400 0    60   ~ 0
-Connector for Metering/Processor boards - Supplies IV samples \nand +5V power with/without isolation
-Text GLabel 650  5000 3    60   Input ~ 0
-IA1+
-Text GLabel 650  5700 1    60   Input ~ 0
+Text Notes 7900 6050 0    60   ~ 0
+Connector for Metering/Processor boards.
+Text GLabel 1900 5350 3    60   Input ~ 0
 IA1-
-Text GLabel 600  6000 3    60   Input ~ 0
-IB1+
-Text GLabel 600  6700 1    60   Input ~ 0
-IB1-
 Wire Notes Line
 	4100 500  4100 7800
 Wire Notes Line
@@ -567,13 +537,7 @@ Wire Wire Line
 Wire Wire Line
 	3300 3350 3300 3250
 Wire Wire Line
-	650  5000 950  5000
-Wire Wire Line
-	650  5700 950  5700
-Wire Wire Line
-	600  6000 950  6000
-Wire Wire Line
-	600  6700 950  6700
+	1850 4650 2150 4650
 Wire Wire Line
 	4550 900  4700 900 
 Wire Wire Line
@@ -604,8 +568,6 @@ Wire Wire Line
 Wire Wire Line
 	6000 2800 6000 2950
 Wire Wire Line
-	6000 2500 6000 2300
-Wire Wire Line
 	5950 1250 5950 1500
 Wire Wire Line
 	6100 1250 6100 1500
@@ -616,12 +578,12 @@ Wire Wire Line
 $Comp
 L power:GNDA #PWR010
 U 1 1 59F7360B
-P 1150 5350
-F 0 "#PWR010" H 1150 5100 50  0001 C CNN
-F 1 "GNDA" V 1155 5222 50  0000 R CNN
-F 2 "" H 1150 5350 50  0001 C CNN
-F 3 "" H 1150 5350 50  0001 C CNN
-	1    1150 5350
+P 2350 5000
+F 0 "#PWR010" H 2350 4750 50  0001 C CNN
+F 1 "GNDA" V 2355 4872 50  0000 R CNN
+F 2 "" H 2350 5000 50  0001 C CNN
+F 3 "" H 2350 5000 50  0001 C CNN
+	1    2350 5000
 	0    -1   -1   0   
 $EndComp
 Text GLabel 3350 1050 2    60   Input ~ 0
@@ -630,35 +592,27 @@ Text GLabel 3300 2050 2    60   Input ~ 0
 UB_SAMP
 Text GLabel 3300 2850 2    60   Input ~ 0
 UC_SAMP
-Text GLabel 8500 3750 1    60   Input ~ 0
+Text GLabel 9000 3850 2    60   Input ~ 0
 UA_SAMP
-Text GLabel 8400 3750 1    60   Input ~ 0
+Text GLabel 9000 3950 2    60   Input ~ 0
 UB_SAMP
-Text GLabel 8300 3750 1    60   Input ~ 0
+Text GLabel 9000 4050 2    60   Input ~ 0
 UC_SAMP
-Text GLabel 8500 4250 3    60   Input ~ 0
+Text GLabel 8500 5550 0    60   Input ~ 0
 GNDA
-Text GLabel 8000 4250 3    60   Input ~ 0
+Text GLabel 9000 5250 2    60   Input ~ 0
 IA1+
-Text GLabel 8100 4250 3    60   Input ~ 0
+Text GLabel 9000 5350 2    60   Input ~ 0
 IA1-
-Text GLabel 8200 4250 3    60   Input ~ 0
+Text GLabel 9000 5450 2    60   Input ~ 0
 IB1+
-Text GLabel 8300 4250 3    60   Input ~ 0
+Text GLabel 9000 5550 2    60   Input ~ 0
 IB1-
-Text GLabel 9250 1600 3    60   Input ~ 0
-IA1+
-Text GLabel 9350 1600 3    60   Input ~ 0
-IA1-
-Text GLabel 10050 1600 3    60   Input ~ 0
-IB1+
-Text GLabel 10150 1600 3    60   Input ~ 0
-IB1-
-Text GLabel 8100 3750 1    60   Input ~ 0
+Text GLabel 8500 3950 0    60   Input ~ 0
 +3.3V_ISO
-Text GLabel 8400 4250 3    60   Input ~ 0
+Text GLabel 8500 5450 0    60   Input ~ 0
 GNDPWR
-Text GLabel 8000 3750 1    60   Input ~ 0
+Text GLabel 8500 3850 0    60   Input ~ 0
 +3V3
 Text Label 5200 2800 3    60   ~ 0
 UN_IN
@@ -693,7 +647,7 @@ F 5 "1" V 8250 2600 60  0001 C CNN "DNP"
 	1    8250 2600
 	1    0    0    -1  
 $EndComp
-Text GLabel 6000 2400 2    60   Input ~ 0
+Text GLabel 6200 2250 2    60   Input ~ 0
 +3.3V
 Text GLabel 5000 1550 3    60   Input ~ 0
 GNDA
@@ -738,12 +692,12 @@ Wire Wire Line
 $Comp
 L power:+3.3V #PWR0101
 U 1 1 5C8E7887
-P 6000 2300
-F 0 "#PWR0101" H 6000 2150 50  0001 C CNN
-F 1 "+3.3V" H 6015 2473 50  0000 C CNN
-F 2 "" H 6000 2300 50  0001 C CNN
-F 3 "" H 6000 2300 50  0001 C CNN
-	1    6000 2300
+P 6200 2200
+F 0 "#PWR0101" H 6200 2050 50  0001 C CNN
+F 1 "+3.3V" H 6215 2373 50  0000 C CNN
+F 2 "" H 6200 2200 50  0001 C CNN
+F 3 "" H 6200 2200 50  0001 C CNN
+	1    6200 2200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -758,69 +712,170 @@ F 3 "" H 6100 1500 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	950  5300 950  5350
+	2150 4950 2150 5000
 Wire Wire Line
-	950  6300 950  6350
+	2150 5000 2350 5000
+Connection ~ 2150 5000
 Wire Wire Line
-	950  5350 1150 5350
-Connection ~ 950  5350
+	2150 5000 2150 5050
 Wire Wire Line
-	950  5350 950  5400
+	6000 2500 6200 2500
+Wire Wire Line
+	6200 2500 6200 2200
 $Comp
-L power:GNDA #PWR0103
-U 1 1 5C925595
-P 1200 6350
-F 0 "#PWR0103" H 1200 6100 50  0001 C CNN
-F 1 "GNDA" V 1205 6222 50  0000 R CNN
-F 2 "" H 1200 6350 50  0001 C CNN
-F 3 "" H 1200 6350 50  0001 C CNN
-	1    1200 6350
+L device:C C4
+U 1 1 5C8DABB2
+P 6250 2700
+F 0 "C4" H 6365 2746 50  0000 L CNN
+F 1 "1u" H 6365 2655 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" H 6288 2550 50  0001 C CNN
+F 3 "" H 6250 2700 50  0001 C CNN
+F 4 "C" H 6250 2700 50  0001 C CNN "PN"
+	1    6250 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 2550 6250 2500
+Wire Wire Line
+	6250 2500 6200 2500
+Connection ~ 6200 2500
+Wire Wire Line
+	6250 2850 6250 2950
+Wire Wire Line
+	6250 2950 6150 2950
+Connection ~ 6000 2950
+$Comp
+L conn:Conn_02x18_Counter_Clockwise J2
+U 1 1 5C8D7B17
+P 8700 4650
+F 0 "J2" H 8750 5667 50  0000 C CNN
+F 1 "Conn_02x18_Counter_Clockwise" H 8750 5576 50  0000 C CNN
+F 2 "hi-link_smps:PCIE-36-SKT" H 8700 4650 50  0001 C CNN
+F 3 "~" H 8700 4650 50  0001 C CNN
+	1    8700 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L conn:Audio-Jack-3 J?
+U 1 1 5C8E04B7
+P 1550 5250
+F 0 "J?" H 1526 5575 50  0000 C CNN
+F 1 "Audio-Jack-3" H 1526 5484 50  0000 C CNN
+F 2 "" H 1800 5350 50  0001 C CNN
+F 3 "~" H 1800 5350 50  0001 C CNN
+	1    1550 5250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 5350 2150 5350
+Wire Wire Line
+	1850 4650 1850 5250
+Wire Wire Line
+	1850 5250 1750 5250
+Text GLabel 1850 4750 0    60   Input ~ 0
+IA1+
+$Comp
+L device:R R?
+U 1 1 5C8E9E2F
+P 2350 6150
+F 0 "R?" V 2143 6150 50  0000 C CNN
+F 1 "5.8R" V 2234 6150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2280 6150 50  0001 C CNN
+F 3 "" H 2350 6150 50  0001 C CNN
+F 4 "R0603" H 2350 6150 50  0001 C CNN "PN"
+F 5 "CPF0603B5R76E1" H 2350 6150 60  0001 C CNN "manf#"
+	1    2350 6150
+	-1   0    0    1   
+$EndComp
+$Comp
+L device:R R?
+U 1 1 5C8E9E36
+P 2350 6550
+F 0 "R?" V 2143 6550 50  0000 C CNN
+F 1 "5.8R" V 2234 6550 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2280 6550 50  0001 C CNN
+F 3 "" H 2350 6550 50  0001 C CNN
+F 4 "R0603" H 2350 6550 50  0001 C CNN "PN"
+	1    2350 6550
+	-1   0    0    1   
+$EndComp
+Text GLabel 2100 6700 3    60   Input ~ 0
+IB1-
+Wire Wire Line
+	2050 6000 2350 6000
+$Comp
+L power:GNDA #PWR?
+U 1 1 5C8E9E3E
+P 2550 6350
+F 0 "#PWR?" H 2550 6100 50  0001 C CNN
+F 1 "GNDA" V 2555 6222 50  0000 R CNN
+F 2 "" H 2550 6350 50  0001 C CNN
+F 3 "" H 2550 6350 50  0001 C CNN
+	1    2550 6350
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	1200 6350 950  6350
-Connection ~ 950  6350
+	2350 6300 2350 6350
 Wire Wire Line
-	950  6350 950  6400
+	2350 6350 2550 6350
+Connection ~ 2350 6350
+Wire Wire Line
+	2350 6350 2350 6400
 $Comp
-L conn:Conn_01x02 J3
-U 1 1 5C926A8E
-P 9250 1300
-F 0 "J3" V 9216 1112 50  0000 R CNN
-F 1 "Conn_01x02" V 9125 1112 50  0000 R CNN
-F 2 "" H 9250 1300 50  0001 C CNN
-F 3 "~" H 9250 1300 50  0001 C CNN
-	1    9250 1300
+L conn:Audio-Jack-3 J?
+U 1 1 5C8E9E48
+P 1750 6600
+F 0 "J?" H 1726 6925 50  0000 C CNN
+F 1 "Audio-Jack-3" H 1726 6834 50  0000 C CNN
+F 2 "" H 2000 6700 50  0001 C CNN
+F 3 "~" H 2000 6700 50  0001 C CNN
+	1    1750 6600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1550 6700 2350 6700
+Wire Wire Line
+	2050 6000 2050 6600
+Wire Wire Line
+	2050 6600 1950 6600
+Text GLabel 2050 6100 0    60   Input ~ 0
+IB1+
+$Comp
+L device:LED D?
+U 1 1 5C8F08AF
+P 6700 2700
+F 0 "D?" V 6738 2583 50  0000 R CNN
+F 1 "IND_LED" V 6647 2583 50  0000 R CNN
+F 2 "" H 6700 2700 50  0001 C CNN
+F 3 "" H 6700 2700 50  0001 C CNN
+F 4 "LED" H 6700 2700 50  0001 C CNN "PN"
+	1    6700 2700
 	0    -1   -1   0   
 $EndComp
 $Comp
-L conn:Conn_01x02 J4
-U 1 1 5C926B6B
-P 10050 1300
-F 0 "J4" V 10016 1112 50  0000 R CNN
-F 1 "Conn_01x02" V 9925 1112 50  0000 R CNN
-F 2 "" H 10050 1300 50  0001 C CNN
-F 3 "~" H 10050 1300 50  0001 C CNN
-	1    10050 1300
-	0    -1   -1   0   
+L device:R R?
+U 1 1 5C8F0995
+P 6700 3100
+F 0 "R?" H 6770 3146 50  0000 L CNN
+F 1 "499" H 6770 3055 50  0000 L CNN
+F 2 "" V 6630 3100 50  0001 C CNN
+F 3 "" H 6700 3100 50  0001 C CNN
+F 4 "R" H 6700 3100 50  0001 C CNN "PN"
+	1    6700 3100
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9250 1600 9250 1500
+	6250 2500 6700 2500
 Wire Wire Line
-	9350 1500 9350 1600
+	6700 2500 6700 2550
+Connection ~ 6250 2500
 Wire Wire Line
-	10050 1500 10050 1600
+	6700 2850 6700 2950
 Wire Wire Line
-	10150 1600 10150 1500
-$Comp
-L conn:Conn_02x06_Counter_Clockwise J2
-U 1 1 5C93A62A
-P 8200 4050
-F 0 "J2" V 8296 3662 50  0000 R CNN
-F 1 "Conn_02x06_Counter_Clockwise" V 8205 3662 50  0000 R CNN
-F 2 "" H 8200 4050 50  0001 C CNN
-F 3 "~" H 8200 4050 50  0001 C CNN
-	1    8200 4050
-	0    -1   -1   0   
-$EndComp
+	6700 3250 6150 3250
+Wire Wire Line
+	6150 3250 6150 2950
+Connection ~ 6150 2950
+Wire Wire Line
+	6150 2950 6000 2950
 $EndSCHEMATC
