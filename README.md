@@ -51,7 +51,7 @@ The rest.
 * The unused 5.8R - R3,R4,R10,R11,R20,R21,R18,R19,R30,R31,R29,R28.
 * The unused J3 connector.
 * J5 - the 8 pin connector.  I replaced with a 2 3.5mm TRS audio jacks since this is the connection used by CTs.  These are currently labeled J3 and J4.  I find I get confused on how to wire up a TRS audio jack. So I like to keep an image around.
-
+![3.5 Mail TRS Audio Jack](https://github.com/BitKnitting/Tisham_PCB_Power_ATM90e26/blob/master/images/trs_quarter_inch_male.gif)
 
 ********
 TODO: Verify wiring is correct for the TRS Jacks
