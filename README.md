@@ -12,8 +12,6 @@ Tisham's schematic has a Power Systems section that I deleted.  Because:
 * I do not need/want battery backup.
 ## Deleted parts
 Deleted parts include:
-* U3 (PN=AP7365-33YG-13)
-* U2 (PN=AP7365-33YG-13)
 * U1 (PN=MCP73831T-3ACI/OT)
 * C5,C8,C6,C7,C4,C9 (1µF)
 * R32 (2K)
