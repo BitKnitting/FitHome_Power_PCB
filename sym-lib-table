@@ -3,4 +3,6 @@
   (lib (name graphic_symbols)(type Legacy)(uri ${KICAD_SYMBOL_DIR}/graphic_symbols.lib)(options "")(descr ""))
   (lib (name whatnick)(type Legacy)(uri ${KIPRJMOD}/whatnick.lib)(options "")(descr ""))
   (lib (name dc-dc1)(type Legacy)(uri ${KIPRJMOD}/dc-dc.lib)(options "")(descr ""))
+  (lib (name TRS35_Female)(type Legacy)(uri /Users/mj/FitHome/repos/Tishams_PCBs/din_power_atm90e26/TRS35_Female.lib)(options "")(descr ""))
+  (lib (name Fithome)(type Legacy)(uri /Users/mj/FitHome/repos/Tishams_PCBs/din_power_atm90e26/Fithome.lib)(options "")(descr ""))
 )

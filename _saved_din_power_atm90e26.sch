@@ -419,7 +419,7 @@ UB
 Text GLabel 4650 900  1    60   Input ~ 0
 UA
 Text GLabel 4800 2500 0    60   Input ~ 0
-UC
+V_ACDC
 Text GLabel 4800 2800 0    60   Input ~ 0
 UN
 $Comp
@@ -583,25 +583,23 @@ F 3 "" H 2350 5000 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Text GLabel 3350 1050 2    60   Input ~ 0
-UA_SAMP
+VP_0
 Text GLabel 3300 2050 2    60   Input ~ 0
-UB_SAMP
+VP_1
 Text GLabel 3300 2850 2    60   Input ~ 0
-UC_SAMP
+V_ACDC
 Text GLabel 9000 3850 2    60   Input ~ 0
-UA_SAMP
+VP_0
 Text GLabel 9000 3950 2    60   Input ~ 0
-UB_SAMP
-Text GLabel 9000 4050 2    60   Input ~ 0
-UC_SAMP
+VP_1
 Text GLabel 8500 5550 0    60   Input ~ 0
-GNDA
+GND_METER
 Text GLabel 8500 3950 0    60   Input ~ 0
-+3.3V_ISO
+3V3_METER
 Text GLabel 8500 5450 0    60   Input ~ 0
-GNDPWR
+GND_CPU
 Text GLabel 8500 3850 0    60   Input ~ 0
-+3V3
+3V3_CPU
 Text Label 5200 2800 3    60   ~ 0
 UN_IN
 Text Label 1850 1050 0    60   ~ 0
@@ -637,8 +635,6 @@ F 5 "1" V 8250 2600 60  0001 C CNN "DNP"
 $EndComp
 Text GLabel 6200 2250 2    60   Input ~ 0
 +5V
-Text GLabel 5000 1550 3    60   Input ~ 0
-GNDA
 $Comp
 L whatnick:LOGO G1
 U 1 1 59F74376
@@ -910,7 +906,7 @@ Wire Wire Line
 	5600 4650 5600 4550
 Connection ~ 5600 4100
 Text GLabel 6450 4100 2    60   Input ~ 0
-+3.3V_ISO
+3V3_METER
 $Comp
 L din_power_atm90e26-rescue:AP7365-33YG-13 U6
 U 1 1 5C8FDCE8
@@ -964,7 +960,7 @@ Wire Wire Line
 	5600 5950 5600 5850
 Connection ~ 5600 5400
 Text GLabel 6600 5400 3    60   Input ~ 0
-+3V3
+3V3_CPU
 $Comp
 L power:+5V #PWR0105
 U 1 1 5C8FFE1B
@@ -1075,4 +1071,8 @@ Text GLabel 9000 5450 2    60   Input ~ 0
 I1P_1_IN
 Text GLabel 9000 5550 2    60   Input ~ 0
 I1N_1_IN
+Text GLabel 4900 4650 3    60   Input ~ 0
+GND_METER
+Text GLabel 4950 5950 3    60   Input ~ 0
+GND_CPU
 $EndSCHEMATC
