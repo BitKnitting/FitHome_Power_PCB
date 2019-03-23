@@ -3,5 +3,6 @@
   (lib (name 10061913-100CLF)(type Legacy)(uri "$(KIPRJMOD)/pcix.pretty/10061913-100CLF.mod")(options "")(descr ""))
   (lib (name sip)(type KiCad)(uri "$(KIPRJMOD)/sip.pretty")(options "")(descr ""))
   (lib (name Whatnick_logo)(type KiCad)(uri "$(KIPRJMOD)/Whatnick_logo.pretty")(options "")(descr ""))
-  (lib (name FitHome)(type KiCad)(uri "$(KIPR_IMOD)/Fithome.pretty")(options "")(descr ""))
+  (lib (name HappyDayEnergyMonitor)(type KiCad)(uri ${KIPRJMOD}/HappyDayEnergyMonitor.pretty)(options "")(descr ""))
+  (lib (name Connectors_Phoenix)(type Github)(uri https://github.com/KiCad/Connectors_Phoenix.pretty)(options "")(descr ""))
 )

@@ -18,8 +18,6 @@ Deleted parts include:
 * R33 (1K)
 * D1 (PMEG1020EA)
 
-__CONCERN__:  Tisham notes below: x2 _2x1117 series LDO for generating 3.3v from 5V input to clean up SMPS noise_.  
-__POR__: Removed LDOs.  Added a 1uF C between VDC+/-
 
 ## Changes to Power Systems(5V)
 I took out the components used for the battery.  I left in the (5V -> 3.3V) so that the LDO can clean up noise coming out of the SMPS.
