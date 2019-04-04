@@ -378,10 +378,8 @@ Text Notes 1800 700  0    60   ~ 0
 Voltage Sampling
 Text Notes 1600 4000 0    60   ~ 0
 Current Sampling
-Text Notes 8750 3400 0    60   ~ 0
-CT Input
-Text Notes 7900 6050 0    60   ~ 0
-Connector for Metering/Processor boards.
+Text Notes 8350 5400 0    60   ~ 0
+Connector to meter PCB
 Text GLabel 1900 5350 3    60   Input ~ 0
 I1N_0_N
 Wire Notes Line
@@ -480,17 +478,17 @@ Text GLabel 3350 1050 2    60   Input ~ 0
 VP_0
 Text GLabel 3300 2050 2    60   Input ~ 0
 VP_1
-Text GLabel 9350 4950 2    60   Input ~ 0
+Text GLabel 8350 4400 0    60   Input ~ 0
 VP_0
-Text GLabel 9350 3850 2    60   Input ~ 0
+Text GLabel 9450 3800 2    60   Input ~ 0
 VP_1
-Text GLabel 8400 4550 0    60   Input ~ 0
+Text GLabel 9450 3500 2    60   Input ~ 0
 GND_M
-Text GLabel 8400 3850 0    60   Input ~ 0
+Text GLabel 8350 3300 0    60   Input ~ 0
 3V3_M
-Text GLabel 8400 5550 0    60   Input ~ 0
+Text GLabel 9450 3900 2    60   Input ~ 0
 GND_CPU
-Text GLabel 8400 5450 0    60   Input ~ 0
+Text GLabel 9400 4600 2    60   Input ~ 0
 3V3_CPU
 Text Label 5200 2800 3    60   ~ 0
 UN_IN
@@ -519,8 +517,6 @@ F 5 "1" V 8250 2600 60  0001 C CNN "DNP"
 	1    8250 2600
 	1    0    0    -1  
 $EndComp
-Text GLabel 6200 2250 2    60   Input ~ 0
-+5V
 $Comp
 L whatnick:LOGO G1
 U 1 1 59F74376
@@ -532,19 +528,6 @@ F 3 "" H 9000 2600 60  0001 C CNN
 F 4 "X" H 9000 2600 50  0001 C CNN "PN"
 F 5 "1" H 9000 2600 60  0001 C CNN "DNP"
 	1    9000 2600
-	1    0    0    -1  
-$EndComp
-$Comp
-L graphic_symbols:Logo_Open_Hardware_Small LOGO_OSHW1
-U 1 1 5A0F959B
-P 9850 2600
-F 0 "LOGO_OSHW1" H 9850 2875 50  0001 C CNN
-F 1 "Logo_Open_Hardware_Small" H 9850 2375 50  0001 C CNN
-F 2 "Symbols:OSHW-Symbol_6.7x6mm_SilkScreen" H 9850 2600 50  0001 C CNN
-F 3 "" H 9850 2600 50  0001 C CNN
-F 4 "X" H 9850 2600 50  0001 C CNN "PN"
-F 5 "1" H 9850 2600 60  0001 C CNN "DNP"
-	1    9850 2600
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -935,49 +918,77 @@ Wire Wire Line
 	5500 5950 5600 5950
 Wire Notes Line
 	7600 500  7600 6550
-Text GLabel 9350 5450 2    60   Input ~ 0
+Text GLabel 8350 4500 0    60   Input ~ 0
 I1P_0_IN
-Text GLabel 9350 5250 2    60   Input ~ 0
+Text GLabel 8300 4900 0    60   Input ~ 0
 I1N_0_N
-Text GLabel 9350 4150 2    60   Input ~ 0
+Text GLabel 8350 3200 0    60   Input ~ 0
 I1P_1_IN
-Text GLabel 9350 4050 2    60   Input ~ 0
+Text GLabel 9400 4900 2    60   Input ~ 0
 I1N_1_IN
 Text GLabel 4900 4650 3    60   Input ~ 0
 GND_M
 Text GLabel 4950 5950 3    60   Input ~ 0
 GND_CPU
-Text Notes 8000 6200 0    50   ~ 0
-Pin Mappings based on Footprint.
 Wire Wire Line
-	8400 3850 8550 3850
+	8350 3300 8500 3300
 Wire Wire Line
-	8550 4550 8400 4550
+	9400 4900 9200 4900
 Wire Wire Line
-	8400 5450 8550 5450
-Wire Wire Line
-	8550 5550 8400 5550
-Wire Wire Line
-	9350 5450 9050 5450
-Wire Wire Line
-	9350 5250 9050 5250
-Wire Wire Line
-	9350 4950 9050 4950
-Wire Wire Line
-	9350 4150 9050 4150
-Wire Wire Line
-	9350 4050 9050 4050
-Wire Wire Line
-	9350 3850 9050 3850
+	9450 3800 9200 3800
 $Comp
-L din_power_atm90e26-rescue:CONN_02X18 J2
-U 1 1 5C996796
-P 8800 4700
-F 0 "J2" H 8800 5765 50  0000 C CNN
-F 1 "CONN_02X18" H 8800 5674 50  0000 C CNN
-F 2 "hi-link_smps:PCIE-36-SKT" H 8800 3650 50  0001 C CNN
-F 3 "" H 8800 3650 50  0001 C CNN
-	1    8800 4700
+L FitHome:PCI_Express J2
+U 1 1 5CA81E0B
+P 8750 4700
+F 0 "J2" H 8850 6425 50  0000 C CNN
+F 1 "PCI_Express" H 8850 6334 50  0000 C CNN
+F 2 "FitHome_PCI_Express_TH:PCIE-36-SKT" H 8750 4700 50  0001 C CNN
+F 3 "" H 8750 4700 50  0001 C CNN
+	1    8750 4700
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	9400 4600 9200 4600
+Wire Wire Line
+	8350 4500 8500 4500
+Wire Wire Line
+	8500 4900 8300 4900
+NoConn ~ 8500 4800
+NoConn ~ 8500 4700
+NoConn ~ 8500 4600
+NoConn ~ 8500 4300
+NoConn ~ 9200 4800
+NoConn ~ 9200 4700
+NoConn ~ 9200 4500
+NoConn ~ 9200 4400
+NoConn ~ 9200 4300
+Wire Wire Line
+	9450 3900 9200 3900
+Wire Wire Line
+	9450 3500 9200 3500
+NoConn ~ 9200 3200
+NoConn ~ 9200 3300
+NoConn ~ 9200 3400
+NoConn ~ 9200 3600
+NoConn ~ 9200 3700
+NoConn ~ 9200 4000
+NoConn ~ 9200 4100
+NoConn ~ 9200 4200
+Wire Wire Line
+	8500 3200 8350 3200
+NoConn ~ 8500 3400
+NoConn ~ 8500 3500
+NoConn ~ 8500 3600
+NoConn ~ 8500 3700
+NoConn ~ 8500 3800
+NoConn ~ 8500 3900
+NoConn ~ 8500 4000
+Wire Wire Line
+	8500 4400 8350 4400
+NoConn ~ 8500 4100
+NoConn ~ 8500 4200
+NoConn ~ 4550 1000
+NoConn ~ 4550 1200
+NoConn ~ 1350 5200
+NoConn ~ 1550 6550
 $EndSCHEMATC

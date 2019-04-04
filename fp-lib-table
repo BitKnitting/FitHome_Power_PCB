@@ -5,4 +5,5 @@
   (lib (name Whatnick_logo)(type KiCad)(uri "$(KIPRJMOD)/Whatnick_logo.pretty")(options "")(descr ""))
   (lib (name HappyDayEnergyMonitor)(type KiCad)(uri ${KIPRJMOD}/HappyDayEnergyMonitor.pretty)(options "")(descr ""))
   (lib (name Connectors_Phoenix)(type Github)(uri https://github.com/KiCad/Connectors_Phoenix.pretty)(options "")(descr ""))
+  (lib (name FitHome_PCI_Express_TH)(type KiCad)(uri ${KIPRJMOD}/FitHome_PCI_Express_TH.pretty)(options "")(descr ""))
 )
