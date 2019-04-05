@@ -1,57 +1,54 @@
+Kicad is used to create the schematic and layout.
+# Power PCB
+The Power PCB is used by [the FitHome project](https://hackaday.io/project/164721-fithome). It monitors the voltage and current of a (North American's) home energy lines.  It is the bottom PCB of three PCBs that when combined provide Watt readings and send them over wireless to an mqtt broker.  The other PCBs include:  
+* [The meter PCB](https://github.com/BitKnitting/Tisham_PCB_meter_atm90e26).  The meter PCB includes two atm90e26 energy monitor ICs that takes in the analog readings from the power PCB and converts them into DC measurements a microcontroller can read.  
+* [The microcontroller PCB](https://github.com/BitKnitting/Tisham_PCB_Feather).  The microcontroller PCB mounts a microcontroller with wifi - like a Feather RFM95 or a wemos D1 (a bit up in the air as of this date - 4/5/2019).  The microcontroller gets the voltage and current readings from the atm90e26's over SPI and then sends them via mqtt.
+
+The three connect together to become the FitHome hardware.
+
+# Thanks to Those That Went Before
+This project extends [Tisham Dhar's work on building energy monitors using an atm90e26](https://github.com/whatnick/DIN_Rail_EnergyMonitor).  In particular, [the DIN Rail energy monitor](https://www.crowdsupply.com/whatnick/atm90e26-energy-monitor-kits).  Besides his open source projects, Tisham has been exceptionally helpful and supportive.  Tisham continues to inspire me.  THANK YOU.
+
 My goal is to get some PCBs from OSH Park and populate with parts based on a BoM I create with the [Kicad_to_Octopart_BOM_csv tool](https://github.com/BitKnitting/Kicad_to_Octopart_BOM_csv) .
+# Background Info
+ ## Electricity Coming Into Our Homes
+ In our North American homes, 120V of electricity comes in through two power lines (L0 and L1).  A third line (N) acts as the reference point (analog ground) for voltage/current measurements.
+ ![120V](images/120V_incoming_NA_House.png)
+ _Image from [here](https://learn.openenergymonitor.org/electricity-monitoring/ac-power-theory/use-in-north-america)_  
 
-# Changes to Power Systems
-I am refering to the place on the power schematic that is labeled Power Systems (5V).  I only need 3.3V and do not need battery backup.  
+ See the section in the schematic labelled _Incoming 120V_.  
+ ### Surges
+ The MOVs(Metal Oxide Varistors - RV1, RV2, and RV3 on the schematic) clamp down on the voltage coming in when there are power surges.  Most of the time, voltage in North American homes oscillates from 0 to a peak voltage of 169 volts.  Sometimes this oscillation is disturbed by a spike in voltage caused by a lightning strike or  switching in the power grid:  
+ ![power surge image](images/power_surge_incoming_electricity.png)  
+ ## Voltage Sampling
+ The Open Energy Monitor project has [great info](https://learn.openenergymonitor.org/electricity-monitoring/voltage-sensing/measuring-voltage-with-an-acac-power-adapter) on the how and the what of voltage sampling.  See the Voltage Sampling section of the schematic.
 
-There are two DC power lines:  
-* +3.3V - power to the CPU.
-* +3.3V_ISO - power to the meter obtained by using U5 (DC-DC isolator) to get the isolated power for the meter.
+ If any one of the resistors breaks down, the full 120V won’t be sent to the rest of the circuit.  Also, the resistors need to be rated to handle the incoming voltage (in my case 120V…but to be safe probably 240V rated resistors are a better thing to use). 
+ 
+Noted in the atm90e26's datasheet: The pins that are for voltage sampling (15 and 16): _…are differential inputs for voltage. Input range is 120μVrms~600mVrms…_ 
 
-Tisham's schematic has a Power Systems section that I deleted.  Because:
-* Nothing needs 5V power.
-* I do not need/want battery backup.
-## Deleted parts
-Deleted parts include:
-* U1 (PN=MCP73831T-3ACI/OT)
-* C5,C8,C6,C7,C4,C9 (1µF)
-* R32 (2K)
-* R33 (1K)
-* D1 (PMEG1020EA)
+Looking at the voltage divider formula:
+![voltage divider image](images/voltage_divider.png)  
+R1 = 220K * 4 = 880K
+R2 = 1K
+Vin = 120V
+Vout = 120(1/889)= 135mV.
+# DC Power 
+The atm90e26's and the microcontrollers need 3.3V DC power to work.  Since we have 120V coming in, we can transform it to provide the 3.3V DC power.  See the 120VAC -> 5 and 3.3VDC section in the schematic.  There are three pieces to the conversion:  
+* The 120VAC -> 5VDC [SMPS](https://en.wikipedia.org/wiki/Switched-mode_power_supply).  
+* The two LDOs.  The signal coming out of the SMPS is too noisy.  The LDOs clean up the signal.  
+* The DC-DC isolator. This isolates the power for the atm90e26s from the power for the microcontroller.
+## Current Sampling
+ Two Current Transformers (CTs) are needed to get current readings on the two 120V lines.  The CTs use a [TRS 3.5mm audio jack](https://www.cui.com/product/resource/sj-352x-smt-series.pdf) as the connector.
 
 
-## Changes to Power Systems(5V)
-I took out the components used for the battery.  I left in the (5V -> 3.3V) so that the LDO can clean up noise coming out of the SMPS.
 
-### U5
-U5 isolates the 3.3V that came off U4 into 3.3V for the CPU and the other 3.3V for the ATM meters.  The one Tisham is using (ROE-0505S) inputs 5V and outputs 5V.  I changed this to the [RNM-3.33.3S](https://datasheet.octopart.com/RNM-3.33.3S-Recom-Power-datasheet-17725523.pdf).
+-------------------
+(in process cleaning up below....)
 
-TODO: PINOUT/layout switch footprint
-# Changes to current sampling
-The schematic supports 8 current clamps.  I need only two.
-## Keep
-* IA1+ / IA1-
-* IB1+ / IB1-
-## Delete
-The rest.
-* The unused 5.8R - R3,R4,R10,R11,R20,R21,R18,R19,R30,R31,R29,R28.
-* The unused J3 connector.
-* J5 - the 8 pin connector.  I replaced with a 2 3.5mm TRS audio jacks since this is the connection used by CTs.  These are currently labeled J3 and J4.  I find I get confused on how to wire up a TRS audio jack. So I like to keep an image around.
 ![3.5 Male TRS Audio Jack](https://github.com/BitKnitting/Tisham_PCB_Power_ATM90e26/blob/master/images/trs_quarter_inch_male.gif)  
 The [datasheet for the TRS part (SJ-3523-SMT-TR)](https://www.cui.com/product/resource/sj-352x-smt-series.pdf) shows what the part looks like in it's schematic form.
 ![Schematic of 3.5 Female TRS Audio Jack](https://github.com/BitKnitting/Tisham_PCB_Power_ATM90e26/blob/master/images/TRS_schematic_pins.png)  
-
-********
-TODO: Verify wiring is correct for the TRS Jacks
-********
-# Added LED
-Added an LED and R at the SMPS 3.3V output to indicate whether the 3.3V is indeed there.
-# From 0603 to 0805
-I have standardized on the 0805 package size for Rs and Cs.  I have these in stock.  It is a happier experience to solder with the bigger footprint.
-
-I kept the 5.8 ohm at 0603 because of challenges with availability.
-
-I changed R24, R26, R27 to the 0805 footprint.
-
 
 
 ************************************************************
