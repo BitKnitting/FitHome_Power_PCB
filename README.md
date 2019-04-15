@@ -49,6 +49,18 @@ See the Current Sampling section of the Kicad schematic.
  One CT is clamped onto the L0 line.  The other is clamped onto the L1 line.  Because the CT clamps onto the line, you might hear a CT refered to as a current clamp.
  ![CT in box](images/CurrentClampsInBox.png)
  The CTs use a [TRS 3.5mm audio jack](https://www.cui.com/product/resource/sj-352x-smt-series.pdf) as the connector.
+ ## Characteristics of the CT
+ The characteristics of a CT to be considered when sourcing include:
+ * The amount of Amp Service.  [From this article _Understanding Your Home's Electrical Load_](https://www.bhg.com/home-improvement/electrical/how-to-check-your-homes-electrical-capacity/) _Different homes need different amp services. A 60-amp service is probably inadequate for a modern home. A 100-amp service is good for a home of less than 3,000 square feet that does not have central air-conditioning or electric heat. A home larger than 2,000 square feet that has central air-conditioning or electric heat probably needs a 200-amp service._  According to [Bill Thompson of the Open Energy Monitor Project](https://community.openenergymonitor.org/t/ct-hole-diameter-for-north-america/5149), _US homes built before the late 60s were wired with Copper and typically had 100 Amp service, which used AWG 0 copper...Sometime in the late 60s to early 70s, Copper Service Entrance Wires were replaced by Aluminum. Since Aluminum has more resistance per foot than Copper, the equivalent Aluminum wire is two gauges larger than its Copper counterpart. About that same time, 200 Amp service became the norm._  
+ * The wire gauge.  The Outside Diameter of the wire gauge determines how large the diameter of the CT clamp must be.  As Bill noted, wires could be copper or aluminum, or copper-clad aluminum.  More aluminum, more current - the wider the diameter.  
+   * [100 Amp Service uses 1/0 AWG](https://community.openenergymonitor.org/t/ct-hole-diameter-for-north-america/5149/3) = [12.08 mm](https://lugsdirect.com/Wire_Insulation_Outside_Diameter_Thickness_600V.html).  
+   * 200 Amp Service uses (up to?) 2/0 - 4/0 AWG.  [4/0 AWG has an Outside diameter of 16.04mm](https://lugsdirect.com/Wire_Insulation_Outside_Diameter_Thickness_600V.html).  
+* Whether the burden resistor is included.  This design assumes the CT __does not__ include the burden resistor.  I.e.: it's output is a current and not a voltage.
+#### Popular 100 Amp CT
+The [YHDC SCT-013-000 Current Transform](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/yhdc-sct-013-000-ct-sensor-report) is popular for houses with 100 Amp Service.  It's Outside Diameter is (as the name suggests) 13mm.  So it will be able to clamp around 100 Amp Service houses in North America.
+
+However, it won't be able to clamp around the power cables of 200 Amp houses.  This requires a clamp diameter of at least 16.04 mm.
+
  ## Taking a Current Reading
  I first learned how the current reading circuit worked by reading [this excellent article on the OpenEnergyMonitor's site](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/interface-with-arduino).  If you (like myself) are new to this stuff, it is worth a read.  
 
@@ -68,8 +80,20 @@ See the Current Sampling section of the Kicad schematic.
  This is a Terminal Block made by Phoenix Contact.  It connects the 120V power lines to the power PCB.
  The male contact - [PN 1759059](https://media.digikey.com/pdf/Data%20Sheets/Phoenix%20Contact%20PDFs/1759059.pdf) is soldered to the power PCB.
  ![male 1759059](https://media.digikey.com/photos/Phoenix%20Photos/1759059.jpg)
- The female contact - [PN 1757051](https://media.digikey.com/pdf/Data%20Sheets/Phoenix%20Contact%20PDFs/1757051.pdf) plugs into the male contact and screws the wires into one of the 6 positions.
- ![female](https://media.digikey.com/photos/Phoenix%20Photos/1759059.jpg)
+ The female contact - [PN 1757051](https://media.digikey.com/pdf/Data%20Sheets/Phoenix%20Contact%20PDFs/1757051.pdf) plugs into the male contact and screws the wires into one of the 6 positions.  
+
+ The prices for one of these connectors was WAY TOO HIGH. So I went on Alibaba.com and asked for a quote.  The quote came back:   
+ ```
+ 1757051------MX2EDGK-5.08-6P-14------100PCS------0.36USD/PCS 
+ 1759059------MX2EDGR-5.08-6P-14------100PCS------0.12USD/PCS 
+ ```
+ I noticed the quote used different part numbers:
+ ```
+ MX2EDGK-5.08-6P-14  
+ MX2EDGR-5.08-6P-14  
+ ```
+ Aha!  So it is about the 5.08 pitch and 6 positions is it?  Then there is the Amp amount.  The most I could find was 15A.  While these are a bit more expensive, but certainly less than the ones on digikey,  I ended up ordering 10 for a female/male at about $1.60 each.  Clearly this can come down significantly.  Right now, in prototype, we're fine with [the ones ordered on newegg](https://www.newegg.com/Product/Product.aspx?Item=9SIAHBU8RD2627).
+ ![female](https://media.digikey.com/photos/Phoenix%20Photos/1757051.jpg)
  ## U1 and U2
  These are [the female 3.5 TRS audio part (SJ-3523-SMT-TR)](https://www.cui.com/product/resource/sj-352x-smt-series.pdf). The male audio jack on the end of each current clamp is inserted.
  ![3.5 Male TRS Audio Jack](images/trs_quarter_inch_male.gif)  
