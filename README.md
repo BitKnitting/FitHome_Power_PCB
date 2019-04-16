@@ -1,6 +1,6 @@
 Kicad is used to create the schematic and layout.
 # Power PCB
-The Power PCB is used by [the FitHome project](https://hackaday.io/project/164721-fithome). It monitors the voltage and current of a (North American's) home energy lines.  It is the bottom PCB of three PCBs that when combined provide Watt readings and send them over wireless to an mqtt broker.  The other PCBs include:  
+The Power PCB  monitors the voltage and current of a (North American's) home energy lines.  It is the bottom PCB of three PCBs that when combined provide Watt readings and send them over wireless to an mqtt broker.  The other PCBs include:  
 * [The meter PCB](https://github.com/BitKnitting/Tisham_PCB_meter_atm90e26).  The meter PCB includes two atm90e26 energy monitor ICs that takes in the analog readings from the power PCB and converts them into DC measurements a microcontroller can read.  
 * [The microcontroller PCB](https://github.com/BitKnitting/Tisham_PCB_Feather).  The microcontroller PCB mounts a microcontroller with wifi - like a Feather RFM95 or a wemos D1 (a bit up in the air as of this date - 4/5/2019).  The microcontroller gets the voltage and current readings from the atm90e26's over SPI and then sends them via mqtt.
 
@@ -46,7 +46,9 @@ See the Current Sampling section of the Kicad schematic.
 ## Current Transformers
  Two Current Transformers (CTs) are needed to get current readings on the two 120V lines.   
  ![Current Transformer](images/CurrentTransformer.png)  
- One CT is clamped onto the L0 line.  The other is clamped onto the L1 line.  Because the CT clamps onto the line, you might hear a CT refered to as a current clamp.
+
+ One CT is clamped onto the L0 line.  The other is clamped onto the L1 line.  Because the CT clamps onto the line, you might hear a CT refered to as a current clamp.  
+
  ![CT in box](images/CurrentClampsInBox.png)
  The CTs use a [TRS 3.5mm audio jack](https://www.cui.com/product/resource/sj-352x-smt-series.pdf) as the connector.
  ## Characteristics of the CT
@@ -55,11 +57,16 @@ See the Current Sampling section of the Kicad schematic.
  * The wire gauge.  The Outside Diameter of the wire gauge determines how large the diameter of the CT clamp must be.  As Bill noted, wires could be copper or aluminum, or copper-clad aluminum.  More aluminum, more current - the wider the diameter.  
    * [100 Amp Service uses 1/0 AWG](https://community.openenergymonitor.org/t/ct-hole-diameter-for-north-america/5149/3) = [12.08 mm](https://lugsdirect.com/Wire_Insulation_Outside_Diameter_Thickness_600V.html).  
    * 200 Amp Service uses (up to?) 2/0 - 4/0 AWG.  [4/0 AWG has an Outside diameter of 16.04mm](https://lugsdirect.com/Wire_Insulation_Outside_Diameter_Thickness_600V.html).  
-* Whether the burden resistor is included.  This design assumes the CT __does not__ include the burden resistor.  I.e.: it's output is a current and not a voltage.
+* Whether the burden resistor is included.  This design assumes the CT __does not__ include the burden resistor.  I.e.: it's output is a current and not a voltage.  
+* The Amplitude of the secondary current.  Depending on the number of coils/turns on the secondary,  
+![](https://www.electronicshub.org/wp-content/uploads/2015/06/CT1.jpg)
+A CT might output AC current at different amplitudes.  For example, if the home has 200A service and the secondary has 3,000 coils, the Amplitude is 200/3000 = 66.7mA.  If the same CT was used on a home with 100A service, the Amplitude would be 100/3000, or 33.3mA
 #### Popular 100 Amp CT
-The [YHDC SCT-013-000 Current Transform](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/yhdc-sct-013-000-ct-sensor-report) is popular for houses with 100 Amp Service.  It's Outside Diameter is (as the name suggests) 13mm.  So it will be able to clamp around 100 Amp Service houses in North America.
+The [YHDC SCT-013-000 Current Transform](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/yhdc-sct-013-000-ct-sensor-report) is popular for houses with 100 Amp Service.  It's Outside Diameter is (as the name suggests) 13mm.  So it will be able to clamp around 100 Amp Service houses in North America.  The [YHDC SCT-013-000 datasheet](http://statics3.seeedstudio.com/assets/file/bazaar/product/101990029-SCT-013-000-Datasheet.pdf) notes the number of secondary coils is 1800.  At 100A, 100/1800 = 55.5mA, which is a bit higher than the maximum in the specification, but (I assume without really knowing) "close enough."
 
-However, it won't be able to clamp around the power cables of 200 Amp houses.  This requires a clamp diameter of at least 16.04 mm.
+### 200A CT
+
+The YHD SCT-013-000 can't be used on 200 Amp houses.  The clamp diameter of at least 16.04 mm.  And most likely it is better to have a different coil ratio for the secondary coils.
 
  ## Taking a Current Reading
  I first learned how the current reading circuit worked by reading [this excellent article on the OpenEnergyMonitor's site](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/interface-with-arduino).  If you (like myself) are new to this stuff, it is worth a read.  
