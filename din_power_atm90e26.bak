@@ -629,7 +629,7 @@ $EndComp
 Wire Wire Line
 	6100 4750 6100 4850
 $Comp
-L Fithome:TRS35_3 U1
+L din_power_atm90e26-rescue:TRS35_3-Fithome U1
 U 1 1 5C8F08EE
 P 1050 4900
 F 0 "U1" H 1306 5175 50  0000 C CNN
@@ -647,7 +647,7 @@ Wire Wire Line
 Wire Wire Line
 	2100 4400 2100 4850
 $Comp
-L Fithome:TRS35_3 U2
+L din_power_atm90e26-rescue:TRS35_3-Fithome U2
 U 1 1 5C8FFEC9
 P 1250 6250
 F 0 "U2" H 1506 6525 50  0000 C CNN
@@ -929,7 +929,7 @@ GND_CPU
 Wire Wire Line
 	9450 3700 9200 3700
 $Comp
-L FitHome:PCI_Express J2
+L din_power_atm90e26-rescue:PCI_Express-FitHome J2
 U 1 1 5CA81E0B
 P 8750 4700
 F 0 "J2" H 8850 6425 50  0000 C CNN

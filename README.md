@@ -84,23 +84,33 @@ The YHD SCT-013-000 can't be used on 200 Amp houses.  The clamp diameter of at l
  # Connectors
  Getting connectors right has always been difficult for me.  The connectors used in the Power PCB include:  
  ## J1
- This is a Terminal Block made by Phoenix Contact.  It connects the 120V power lines to the power PCB.
+ This is a plug in Terminal Block.  It connects the 120V power lines to the power PCB.
+ The ones made by Phoenix Connect:  
  The male contact - [PN 1759059](https://media.digikey.com/pdf/Data%20Sheets/Phoenix%20Contact%20PDFs/1759059.pdf) is soldered to the power PCB.
  ![male 1759059](https://media.digikey.com/photos/Phoenix%20Photos/1759059.jpg)
  The female contact - [PN 1757051](https://media.digikey.com/pdf/Data%20Sheets/Phoenix%20Contact%20PDFs/1757051.pdf) plugs into the male contact and screws the wires into one of the 6 positions.  
 
- The prices for one of these connectors was WAY TOO HIGH. So I went on Alibaba.com and asked for a quote.  The quote came back:   
+ The prices for one of these connectors was WAY TOO HIGH. It appears there is a "clone" version that costs far less but is basically the same thing as the ones made by Phoenix Connect.  From an Alibaba quote:  
  ```
  1757051------MX2EDGK-5.08-6P-14------100PCS------0.36USD/PCS 
  1759059------MX2EDGR-5.08-6P-14------100PCS------0.12USD/PCS 
  ```
+ ###  MX2EDGR-5.08-6P  
+ This is the 6 position male piece.  The pins are at a right angle to the rest of the connection.  I noticed some vendors used MX2EDGRC (i.e.: added a C to the end).
+ ###  MX2EDGK-5.08-6P  
+ This is the female part that connects into the male part.  It has the screw downs for the power lines (like those in a power cord).
  I noticed the quote used different part numbers:
  ```
  MX2EDGK-5.08-6P-14  
+
  MX2EDGR-5.08-6P-14  
  ```
- Aha!  So it is about the 5.08 pitch and 6 positions is it?  Then there is the Amp amount.  The most I could find was 15A.  While these are a bit more expensive, but certainly less than the ones on digikey,  I ended up ordering 10 for a female/male at about $1.60 each.  Clearly this can come down significantly.  Right now, in prototype, we're fine with [the ones ordered on newegg](https://www.newegg.com/Product/Product.aspx?Item=9SIAHBU8RD2627).
- ![female](https://media.digikey.com/photos/Phoenix%20Photos/1757051.jpg)
+ #### First Order
+These say they meet an Amp amount of 15A.   I ended up ordering 10 for a female/male at about $1.60 each.  Clearly this can come down significantly.  Right now, in prototype, we're fine with [the ones ordered on newegg](https://www.newegg.com/Product/Product.aspx?Item=9SIAHBU8RD2627).  
+ ![female](https://media.digikey.com/photos/Phoenix%20Photos/1757051.jpg)  
+ __OOPS!__ The male pieces are not at right angles.  I need to be more careful and order by part number.
+ __TBD:__ Not ordering any more at this point.  Query Alibaba.com for MX2EDGR.
+ 
  ## U1 and U2
  These are [the female 3.5 TRS audio part (SJ-3523-SMT-TR)](https://www.cui.com/product/resource/sj-352x-smt-series.pdf). The male audio jack on the end of each current clamp is inserted.
  ![3.5 Male TRS Audio Jack](images/trs_quarter_inch_male.gif)  
