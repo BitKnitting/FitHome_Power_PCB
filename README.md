@@ -49,7 +49,8 @@ See the Current Sampling section of the Kicad schematic.
 
  One CT is clamped onto the L0 line.  The other is clamped onto the L1 line.  Because the CT clamps onto the line, you might hear a CT refered to as a current clamp.  
 
- ![CT in box](images/CurrentClampsInBox.png)
+ ![CT in box](images/CurrentClampsInBox.png)  
+
  The CTs use a [TRS 3.5mm audio jack](https://www.cui.com/product/resource/sj-352x-smt-series.pdf) as the connector.
  ## Characteristics of the CT
  The characteristics of a CT to be considered when sourcing include:
@@ -62,7 +63,25 @@ See the Current Sampling section of the Kicad schematic.
 ![](https://www.electronicshub.org/wp-content/uploads/2015/06/CT1.jpg)
 A CT might output AC current at different amplitudes.  For example, if the home has 200A service and the secondary has 3,000 coils, the Amplitude is 200/3000 = 66.7mA.  If the same CT was used on a home with 100A service, the Amplitude would be 100/3000, or 33.3mA
 #### Popular 100 Amp CT
-The [YHDC SCT-013-000 Current Transform](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/yhdc-sct-013-000-ct-sensor-report) is popular for houses with 100 Amp Service.  It's Outside Diameter is (as the name suggests) 13mm.  So it will be able to clamp around 100 Amp Service houses in North America.  The [YHDC SCT-013-000 datasheet](http://statics3.seeedstudio.com/assets/file/bazaar/product/101990029-SCT-013-000-Datasheet.pdf) notes the number of secondary coils is 1800.  At 100A, 100/1800 = 55.5mA, which is a bit higher than the maximum in the specification, but (I assume without really knowing) "close enough."
+The [YHDC SCT-013-000 Current Transform](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/yhdc-sct-013-000-ct-sensor-report) is popular for houses with 100 Amp Service.  It's Outside Diameter is (as the name suggests) 13mm.  So it will be able to clamp around 100 Amp Service houses in North America.  The [YHDC SCT-013-000 datasheet](http://statics3.seeedstudio.com/assets/file/bazaar/product/101990029-SCT-013-000-Datasheet.pdf) notes the number of secondary coils is 1800.  At 100A, 100/1800 = 55.5mA, which is a bit higher than the maximum in the specification, but (I assume without really knowing) "close enough."  
+
+To get a better feel for this CT, I extended my soldering iron's power cord with my nifty-difty exposed power cord thingy I made.
+![Measuring current of soldering iron](images/measuring_current_soldering_iron.png)    
+
+The [SCT-013-000 datasheet][YHDC SCT-013-000 datasheet](http://statics3.seeedstudio.com/assets/file/bazaar/product/101990029-SCT-013-000-Datasheet.pdf) shows how the sleeve and tip of the TRS jack are wired.    
+
+![TRS wiring](images/CT_TRS_Measuring.png)  
+
+I used my DMM to measure the current.  I put one of the probes on the sleeve and the other on the tip.  Setting the DMM to uA and AC, I got a reading of 1.2uA when my soldering iron was heating up.  I then did the same on our microwave and got a reading of 6.6uA.
+```  
+P = IV  
+P(soldering iron) = .0012A*1800(coil ratio)*120V = 259W
+P(microwave) = .0066A*1800*120 = 1,426W
+```  
+### The Schematics
+The image below shows how the wires of the CT map into the TRS and PCB wiring.  
+![current wiring](images/Current_Schematics.jpg)
+
 
 ### 200A CT
 
@@ -71,7 +90,7 @@ The YHD SCT-013-000 can't be used on 200 Amp houses.  The clamp diameter of at l
  ## Taking a Current Reading
  I first learned how the current reading circuit worked by reading [this excellent article on the OpenEnergyMonitor's site](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/interface-with-arduino).  If you (like myself) are new to this stuff, it is worth a read.  
 
- If the CT outputs current, then a burden resistor is needed to convert to a Voltage to be read.  The readings can be negative.  To accomodate readings using the ADC of the Arduino as discussed in the project, a DC bias circuit of AREF/2 (2.5V) lifts ADC readings to be between 0 and AREF (5V).
+ The CT used in this design outputs current.  A "burden resistor" is to convert into a Voltage that can be read by the microcontroller.  To accomodate readings using the ADC of the Arduino as discussed in the project, a DC bias circuit of AREF/2 (2.5V) lifts ADC readings to be between 0 and AREF (5V).
  
  The atm90e26 does not need a DC bias circuit.  
  ### Burden Resistor
@@ -79,7 +98,8 @@ The YHD SCT-013-000 can't be used on 200 Amp houses.  The clamp diameter of at l
  
  As Tisham noted: _In recent designs I have been splitting the 12R into 6R-6R and grounding the middle for signal symmetry._  This is why two 5.8R resistors are used.  I ran an LTSpice with:  
  *  a sine wave set at 60Hz with an amplitude of 0.0707A (from the OpenEnergyMonitor's Arduino article)
- * .tran 0 .1 0 .1
+ * .tran 0 .1 0 .1  
+ ![LTSpice Schematic](images/LTSpice_Current_Schematic.png)
  ![LTSpice current sampling](images/LTSpice_current_sampling.png)
  # Connectors
  Getting connectors right has always been difficult for me.  The connectors used in the Power PCB include:  
