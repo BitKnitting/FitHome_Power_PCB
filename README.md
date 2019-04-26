@@ -85,9 +85,7 @@ Ah!  The power of the tea kettle!  More like it takes alot of energy to boil wat
    * [100 Amp Service uses 1/0 AWG](https://community.openenergymonitor.org/t/ct-hole-diameter-for-north-america/5149/3) = [12.08 mm](https://lugsdirect.com/Wire_Insulation_Outside_Diameter_Thickness_600V.html).  
    * 200 Amp Service uses (up to?) 2/0 - 4/0 AWG.  [4/0 AWG has an Outside diameter of 16.04mm](https://lugsdirect.com/Wire_Insulation_Outside_Diameter_Thickness_600V.html).  
 * Whether the burden resistor is included.  This design assumes the CT __does not__ include the burden resistor.  I.e.: it's output is a current and not a voltage.  
-* The Amplitude of the secondary current.  Depending on the number of coils/turns on the secondary,  
-![](https://www.electronicshub.org/wp-content/uploads/2015/06/CT1.jpg)
-A CT might output AC current at different amplitudes.  For example, if the home has 200A service and the secondary has 3,000 coils, the Amplitude is 200/3000 = 66.7mA.  If the same CT was used on a home with 100A service, the Amplitude would be 100/3000, or 33.3mA  
+* The ratio of I(in) : I(out)  
 * The inclusion of a zener diode.  This is a terrific safety measure to make sure when the CT is clamped on, there is on open current source.
 
 ### The Schematics
