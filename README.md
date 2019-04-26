@@ -11,7 +11,7 @@ This project extends [Tisham Dhar's work on building energy monitors using an at
 
 Before I took [Chris Gammell's Contextual Electronics course](https://contextualelectronics.com/), I had absolutely no experience with electronics or building PCBs.  Chris is exceptional in so many ways.  THANK YOU.
 
-There is an exceptional community behind [the OpenEnergyMonitor project](https://learn.openenergymonitor.org/).  They not only provide energy monitoring solutions, but are a wealth of knowledge.  THANK YOU.
+There is an exceptional community behind [the OpenEnergyMonitor project](https://learn.openenergymonitor.org/).  They not only provide energy monitoring solutions, but are a wealth of knowledge.  THANK YOU.  In particular, thanks to the kindly delivered advice and help from Robert Wall.  THANK YOU, THANK YOU.
 
 # Background Info
  ## Electricity Coming Into Our Homes
@@ -46,12 +46,38 @@ See the Current Sampling section of the Kicad schematic.
 ## Current Transformers
  Two Current Transformers (CTs) are needed to get current readings on the two 120V lines.   
  ![Current Transformer](images/CurrentTransformer.png)  
+ ### SCT-013-000 CT
+  This CT is the [YHDC SCT-013-000 Current Transformer](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/yhdc-sct-013-000-ct-sensor-report).  It is popular with DIY home energy monitors.  There are two numbers of interest in the [YHDC SCT-013-000 datasheet](http://statics3.seeedstudio.com/assets/file/bazaar/product/101990029-SCT-013-000-Datasheet.pdf):    
+* The diameter of the clamp opening - 13 mm  
+* The I(OUT) - 50 mA  
+As Robert Wall of [the Open Energy Monitor project](https://openenergymonitor.org/) noted to me _...the manufacturer will tweak the number of secondary turns to give the best accuracy overall.  The ratio of a c.t. is __ALWAYS__ specified as a ratio of two currents, the rated primary current to the corresponding secondary current. So your SCT-013-000 is __100 A : 50 mA__._  
+#### TRS 3.5 Jack
+ The CTs use a [TRS 3.5mm audio jack](https://www.cui.com/product/resource/sj-352x-smt-series.pdf) as the connector.  The [SCT-013-000 datasheet][YHDC SCT-013-000 datasheet](http://statics3.seeedstudio.com/assets/file/bazaar/product/101990029-SCT-013-000-Datasheet.pdf) shows how the sleeve and tip of the TRS jack are wired.    
 
+![TRS wiring](images/CT_TRS_Measuring.png)  
+
+![TRS Sleeve and tip](images/CT_Tip_Sleeve.png)  
+Output k is at the tip.  Output l as at the sleeve.
+
+Also note the zener diode.  This is great to have in the circuit to prevent deadly voltage when the CT is clamped to a live line but the jack is not plugged into the rest of the circuit containing the burden resistor.
+#### Tea Kettle Example
+_PLEASE NOTE: Most people would advise against do this.  The clamp exposes an open current source.  Thanks to the zener diode, this is not as dangerous as it seems.  That is assuming there really IS a zener diode and it is working..._  
+
+To clarify the workings of this CT, I measured the current used by our tea kettle.    
+![kettle example](images/CT_kettle_example.jpg)  
+I plugged the kettle into my power cord extender that I made to separate out the live line of the power cord so that I could clamp on the CT.  The black probe of the DMM is touching the sleeve of the CT's jack.  The red probe is touching the tip.  Setting the DMM to measure AC mA, I get a reading of 5.9mA.  
+```
+V = 120V
+I = 5.9mA * 100A / 50mA = .0059*100/.05 = 11.8A
+P = IV = 11.8 * 120 = 1,416w
+```
+Ah!  The power of the tea kettle!  More like it takes alot of energy to boil water for tea.
+
+## Clamping On 
+ ![CT in box](images/CurrentClampsInBox.png)  
  One CT is clamped onto the L0 line.  The other is clamped onto the L1 line.  Because the CT clamps onto the line, you might hear a CT refered to as a current clamp.  
 
- ![CT in box](images/CurrentClampsInBox.png)  
 
- The CTs use a [TRS 3.5mm audio jack](https://www.cui.com/product/resource/sj-352x-smt-series.pdf) as the connector.
  ## Characteristics of the CT
  The characteristics of a CT to be considered when sourcing include:
  * The amount of Amp Service.  [From this article _Understanding Your Home's Electrical Load_](https://www.bhg.com/home-improvement/electrical/how-to-check-your-homes-electrical-capacity/) _Different homes need different amp services. A 60-amp service is probably inadequate for a modern home. A 100-amp service is good for a home of less than 3,000 square feet that does not have central air-conditioning or electric heat. A home larger than 2,000 square feet that has central air-conditioning or electric heat probably needs a 200-amp service._  According to [Bill Thompson of the Open Energy Monitor Project](https://community.openenergymonitor.org/t/ct-hole-diameter-for-north-america/5149), _US homes built before the late 60s were wired with Copper and typically had 100 Amp service, which used AWG 0 copper...Sometime in the late 60s to early 70s, Copper Service Entrance Wires were replaced by Aluminum. Since Aluminum has more resistance per foot than Copper, the equivalent Aluminum wire is two gauges larger than its Copper counterpart. About that same time, 200 Amp service became the norm._  
@@ -61,23 +87,9 @@ See the Current Sampling section of the Kicad schematic.
 * Whether the burden resistor is included.  This design assumes the CT __does not__ include the burden resistor.  I.e.: it's output is a current and not a voltage.  
 * The Amplitude of the secondary current.  Depending on the number of coils/turns on the secondary,  
 ![](https://www.electronicshub.org/wp-content/uploads/2015/06/CT1.jpg)
-A CT might output AC current at different amplitudes.  For example, if the home has 200A service and the secondary has 3,000 coils, the Amplitude is 200/3000 = 66.7mA.  If the same CT was used on a home with 100A service, the Amplitude would be 100/3000, or 33.3mA
-#### Popular 100 Amp CT
-The [YHDC SCT-013-000 Current Transform](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/yhdc-sct-013-000-ct-sensor-report) is popular for houses with 100 Amp Service.  It's Outside Diameter is (as the name suggests) 13mm.  So it will be able to clamp around 100 Amp Service houses in North America.  The [YHDC SCT-013-000 datasheet](http://statics3.seeedstudio.com/assets/file/bazaar/product/101990029-SCT-013-000-Datasheet.pdf) notes the number of secondary coils is 1800.  At 100A, 100/1800 = 55.5mA, which is a bit higher than the maximum in the specification, but (I assume without really knowing) "close enough."  
+A CT might output AC current at different amplitudes.  For example, if the home has 200A service and the secondary has 3,000 coils, the Amplitude is 200/3000 = 66.7mA.  If the same CT was used on a home with 100A service, the Amplitude would be 100/3000, or 33.3mA  
+* The inclusion of a zener diode.  This is a terrific safety measure to make sure when the CT is clamped on, there is on open current source.
 
-To get a better feel for this CT, I extended my soldering iron's power cord with my nifty-difty exposed power cord thingy I made.
-![Measuring current of soldering iron](images/measuring_current_soldering_iron.png)    
-
-The [SCT-013-000 datasheet][YHDC SCT-013-000 datasheet](http://statics3.seeedstudio.com/assets/file/bazaar/product/101990029-SCT-013-000-Datasheet.pdf) shows how the sleeve and tip of the TRS jack are wired.    
-
-![TRS wiring](images/CT_TRS_Measuring.png)  
-
-I used my DMM to measure the current.  I put one of the probes on the sleeve and the other on the tip.  Setting the DMM to uA and AC, I got a reading of 1.2uA when my soldering iron was heating up.  I then did the same on our microwave and got a reading of 6.6uA.
-```  
-P = IV  
-P(soldering iron) = .0012A*1800(coil ratio)*120V = 259W
-P(microwave) = .0066A*1800*120 = 1,426W
-```  
 ### The Schematics
 The image below shows how the wires of the CT map into the TRS and PCB wiring.  
 ![current wiring](images/Current_Schematics.jpg)
