@@ -32,10 +32,12 @@ Noted in the atm90e26's datasheet: The pins that are for voltage sampling (15 an
 
 Looking at the voltage divider formula:
 ![voltage divider image](images/voltage_divider.png)  
+```
 R1 = 220K * 4 = 880K
 R2 = 1K
 Vin = 120V
-Vout = 120(1/889)= 135mV.
+Vout = 120(1/881)= 136mV.  
+```  
 # DC Power 
 The atm90e26's and the microcontrollers need 3.3V DC power to work.  Since we have 120V coming in, we can transform it to provide the 3.3V DC power.  See the 120VAC -> 5 and 3.3VDC section in the schematic.  There are three pieces to the conversion:  
 * The 120VAC -> 5VDC [SMPS](https://en.wikipedia.org/wiki/Switched-mode_power_supply).  
