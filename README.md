@@ -106,7 +106,7 @@ The YHD SCT-013-000 can't be used on 200 Amp houses.  The clamp diameter of at l
  
  The atm90e26 does not need a DC bias circuit.  
  ### Burden Resistor
- Tisham's design uses a 12R burden resistor.  This is to accomodate the atm90e26's 600mV Vrms input limit.  The OpenEnergyMonitor's article noted the current output's Amplitude is .0707A.  Vpp = 0.0707*12 = 848mV.  The amplitude is then 424mV.  The Vrms = 424*sqrt(2) = 600mV.
+ Tisham's design uses a 12R burden resistor.  This is to accomodate the atm90e26's 600mV Vrms input limit.  The OpenEnergyMonitor's article noted the current output's Amplitude is .0707A.  Vpp = 0.0707 x 12 = 848mV.  The amplitude is then 424mV.  The Vrms = 424*sqrt(2) = 600mV.
  
  As Tisham noted: _In recent designs I have been splitting the 12R into 6R-6R and grounding the middle for signal symmetry._  This is why two 5.8R resistors are used.  I ran an LTSpice with:  
  *  a sine wave set at 60Hz with an amplitude of 0.0707A (from the OpenEnergyMonitor's Arduino article)
